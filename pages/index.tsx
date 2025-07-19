@@ -7,8 +7,9 @@ export default function Home() {
   }, [])
 
   return (
-    <div>
-      <h1>⛽ Real-Time Gas Tracker</h1>
-    </div>
+    <main style={{ padding: '2rem', fontFamily: 'Arial' }}>
+      <h1>⛽ Real-Time Cross-Chain Gas Tracker</h1>
+      <p>Fetching live gas prices from Ethereum, Polygon, and Arbitrum...</p>
+    </main>
   )
 }
