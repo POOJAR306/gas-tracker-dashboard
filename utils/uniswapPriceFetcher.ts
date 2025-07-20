@@ -1,6 +1,6 @@
 import { JsonRpcProvider, ethers } from 'ethers'
 import { useGasStore } from '../store/useGasStore'
-
+import type { EventLog } from 'ethers'
 
 const UNISWAP_POOL_ADDRESS = '0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640' // ETH/USDC
 const UNISWAP_ABI = [
