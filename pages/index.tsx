@@ -57,7 +57,7 @@ export default function Home() {
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>{chainData.baseFee.toFixed(2)}</td>
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>{chainData.priorityFee.toFixed(2)}</td>
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>
-                ${costUSD.toFixed(2)}
+              <td>${costUSD.toFixed(2)}</td>
               </td>
             </tr>
           )
