@@ -2,9 +2,10 @@ import { useEffect } from 'react'
 import { startGasTracking } from '../utils/gasFetcher'
 import { useGasStore } from '../store/useGasStore'  
 import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
-
+import { useState } from 'react';
 
 export default function Home() {
+  const [txAmount, setTxAmount] = useState(0.5);
   const usd = useGasStore((state) => state.usdPrice) 
   useEffect(() => {
     startGasTracking()
