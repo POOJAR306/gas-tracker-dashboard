@@ -16,7 +16,9 @@ export default function Home() {
 
   return () => clearInterval(interval)
   }, []);
-
+  const [txAmount, setTxAmount] = useState(0.5);
+  const gasData = useGasStore((state) => state.chains);
+  const usd = useGasStore((state) => state.usdPrice);
   const gasData = useGasStore((state) => state.gasData);
   return (
     <main style={{ padding: '2rem', fontFamily: 'Arial' }}>
