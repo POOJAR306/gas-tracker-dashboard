@@ -1,0 +1,35 @@
+import { useEffect, useRef } from 'react'
+import {
+  createChart,
+  Time,
+  ISeriesApi,
+  CandlestickData,
+} from 'lightweight-charts'
+
+interface Props {
+  data: CandlestickData[]
+}
+
+const GasChart = ({ data }: Props) => {
+  const chartContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!chartContainerRef.current) return
+
+    const chart = createChart(chartContainerRef.current, {
+      width: chartContainerRef.current.clientWidth,
+      height: 300,
+    })
+
+    const candleSeries: ISeriesApi<'Candlestick'> =
+      chart.addCandlestickSeries()
+
+    candleSeries.setData(data)
+
+    return () => chart.remove()
+  }, [data])
+
+  return <div ref={chartContainerRef} style={{ width: '100%', height: 300 }} />
+}
+
+export default GasChart
