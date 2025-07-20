@@ -1,5 +1,5 @@
 // store/useGasStore.ts
-import create from 'zustand'
+import { create } from 'zustand'
 type GasPoint = {
   time: number
   open: number

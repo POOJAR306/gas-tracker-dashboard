@@ -1,6 +1,23 @@
 {
+  "name": "gas-tracker-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "lightweight-charts": "^5.0.8",
-    "react": "^19.1.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.41",
+    "@types/react-dom": "^18.2.17",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
+    "@vitejs/plugin-react": "^4.2.1"
   }
 }
