@@ -44,18 +44,23 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          {['ethereum', 'polygon', 'arbitrum'].map((chain) => (
+          {Object.entries(gasData).map(([chain, data]) => {
+          const gasFeeInGwei = (data.baseFee + data.priorityFee) * 21000;
+          const gasFeeInEth = gasFeeInGwei / 1e9;
+          const costUSD = gasFeeInEth * usd;
+
+          return (
             <tr key={chain}>
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>{chain}</td>
+              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{data.baseFee.toFixed(2)}</td>
+              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{data.priorityFee.toFixed(2)}</td>
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>
-                {gasData[chain]?.baseFee?.toFixed(2) ?? 'Loading...'}
-              </td>
-              <td style={{ border: '1px solid #ccc', padding: '8px' }}>
-                {gasData[chain]?.priorityFee?.toFixed(2) ?? 'Loading...'}
+                ${costUSD.toFixed(2)}
               </td>
             </tr>
-          ))}
-        </tbody>
+          )
+        })}
+      </tbody>
       </table>
     </main>
   );
