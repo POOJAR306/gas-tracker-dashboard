@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { startGasTracking } from '../utils/gasFetcher'
+import { useGasStore } from '../store/useGasStore'  // ✅ Add this line
 
 export default function Home() {
   const gas = useGasStore((state) => state.gasData)
