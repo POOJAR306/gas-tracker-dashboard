@@ -10,7 +10,9 @@ type CandlestickData = {
   low: number;
   close: number;
 };
-
+type Props = {
+  data: CandlestickData[];
+};
 
 export default function GasChart({ data }: Props) {
   const chartContainerRef = useRef<HTMLDivElement>(null);
@@ -18,10 +20,13 @@ export default function GasChart({ data }: Props) {
   useEffect(() => {
     if (!chartContainerRef.current) return;
 
-    const chart = createChart(chartContainerRef.current, {
-      width: chartContainerRef.current.clientWidth,
-      height: 300,
-    });
+    const container = chartContainerRef.current!;
+    container.style.width = '100%';
+    container.style.height = '300px';
+
+    const chart = createChart(container);
+    chart.resize(container.clientWidth, container.clientHeight);
+
 
     const series = chart.addCandlestickSeries();
     series.setData(data);
