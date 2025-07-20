@@ -1,5 +1,6 @@
-import { ethers } from 'ethers'
+import { JsonRpcProvider, ethers } from 'ethers'
 import { useGasStore } from '../store/useGasStore'
+
 
 const UNISWAP_POOL_ADDRESS = '0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640' // ETH/USDC
 const UNISWAP_ABI = [
@@ -7,7 +8,7 @@ const UNISWAP_ABI = [
 ]
 
 export const fetchEthPrice = async () => {
-  const provider = new ethers.providers.JsonRpcProvider(process.env.ETHEREUM_WSS)
+  const provider = new JsonRpcProvider(process.env.ETHEREUM_WSS)
 
   const contract = new ethers.Contract(UNISWAP_POOL_ADDRESS, UNISWAP_ABI, provider)
 
