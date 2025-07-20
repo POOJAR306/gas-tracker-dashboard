@@ -43,7 +43,8 @@ export default function Home() {
         </thead>
         <tbody>
           {Object.entries(gasData).map(([chain, data]) => {
-          const gasFeeInGwei = (data.baseFee + data.priorityFee) * 21000;
+          const chainData = data as { baseFee: number; priorityFee: number; history: any[] };
+          const gasFeeInGwei = (chainData.baseFee + chainData.priorityFee) * 21000;
           const gasFeeInEth = gasFeeInGwei / 1e9;
           const costUSD = gasFeeInEth * usd;
 
