@@ -5,6 +5,7 @@ import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
 
 
 export default function Home() {
+  const usd = useGasStore((state) => state.usdPrice)
   useEffect(() => {
     startGasTracking()
     fetchEthPrice()
@@ -20,8 +21,7 @@ export default function Home() {
   return (
     <main style={{ padding: '2rem', fontFamily: 'Arial' }}>
       <h1> Real-Time Cross-Chain Gas Tracker</h1>
-      const usd = useGasStore((state) => state.usdPrice)
-      <h2> Live ETH/USD Price: ${usd.toFixed(2)}</h2>
+      <h2>💵 Live ETH/USD Price: {usd.toFixed(2)}</h2>
       <p>Fetching live gas prices from Ethereum, Polygon, and Arbitrum...</p>
       <table style={{ marginTop: '1rem', borderCollapse: 'collapse', width: '100%' }}>
         <thead>
