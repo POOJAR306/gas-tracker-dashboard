@@ -3,9 +3,14 @@ import { startGasTracking } from '../utils/gasFetcher'
 import { useGasStore } from '../store/useGasStore'
 import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
 import GasChart from '../components/GasChart'
-import type { SeriesDataItemTypeMap } from 'lightweight-charts'
 
-type CandlestickData = SeriesDataItemTypeMap['Candlestick']
+type CandlestickData = {
+  time: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}
 
 const mockChartData: CandlestickData[] = [
   {
