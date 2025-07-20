@@ -8,7 +8,7 @@ const UNISWAP_ABI = [
 ]
 
 export const fetchEthPrice = async () => {
-  const provider = new JsonRpcProvider(process.env.ETHEREUM_WSS)
+  const provider = new JsonRpcProvider( `https://eth-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_KEY}`)
 
   const contract = new ethers.Contract(UNISWAP_POOL_ADDRESS, UNISWAP_ABI, provider)
 
