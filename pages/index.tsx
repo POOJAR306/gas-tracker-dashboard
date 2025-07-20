@@ -1,16 +1,27 @@
 import { useEffect } from 'react'
 import { startGasTracking } from '../utils/gasFetcher'
 import { useGasStore } from '../store/useGasStore'  
+import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
+
 
 export default function Home() {
   useEffect(() => {
-    startGasTracking();
+    startGasTracking()
+    fetchEthPrice()
+
+  const interval = setInterval(() => {
+    fetchEthPrice()
+  }, 15000) // fetch every 15 sec
+
+  return () => clearInterval(interval)
   }, []);
 
   const gasData = useGasStore((state) => state.gasData);
   return (
     <main style={{ padding: '2rem', fontFamily: 'Arial' }}>
-      <h1>⛽ Real-Time Cross-Chain Gas Tracker</h1>
+      <h1> Real-Time Cross-Chain Gas Tracker</h1>
+      const usd = useGasStore((state) => state.usdPrice)
+      <h2> Live ETH/USD Price: ${usd.toFixed(2)}</h2>
       <p>Fetching live gas prices from Ethereum, Polygon, and Arbitrum...</p>
       <table style={{ marginTop: '1rem', borderCollapse: 'collapse', width: '100%' }}>
         <thead>
