@@ -22,6 +22,9 @@ export default function Home() {
     <main style={{ padding: '2rem', fontFamily: 'Arial' }}>
       <h1> Real-Time Cross-Chain Gas Tracker</h1>
       <h2>Live ETH/USD Price: {usd.toFixed(2)}</h2>
+      console.log(" USD Price:", usd)
+      console.log(" Gas Data:", gasData)
+
       <label>
        Enter ETH/MATIC/ARB Amount:
       <input
