@@ -1,11 +1,16 @@
 // components/GasChart.tsx
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { createChart, CandlestickData } from 'lightweight-charts';
+import createChart from 'lightweight-charts';
 
-type Props = {
-  data: CandlestickData[];
+type CandlestickData = {
+  time: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
 };
+
 
 export default function GasChart({ data }: Props) {
   const chartContainerRef = useRef<HTMLDivElement>(null);
