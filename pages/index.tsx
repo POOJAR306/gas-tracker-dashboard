@@ -3,7 +3,18 @@ import { startGasTracking } from '../utils/gasFetcher'
 import { useGasStore } from '../store/useGasStore'
 import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
 import GasChart from 'C:/Users/pooja/gas-tracker-dashboard/components/GasChart.tsx'
-import type { CandlestickData } from 'lightweight-charts';
+import type { SeriesDataItemTypeMap } from 'lightweight-charts';
+const mockChartData: CandlestickData[] = [
+  {
+    time: Math.floor(Date.now() / 1000),
+    open: 50,
+    high: 70,
+    low: 45,
+    close: 60,
+  },
+];
+
+type CandlestickData = SeriesDataItemTypeMap['Candlestick'];
 export default function Home() {
   const [txAmount, setTxAmount] = useState(0.5)
   const usd = useGasStore((state) => state.usdPrice)
