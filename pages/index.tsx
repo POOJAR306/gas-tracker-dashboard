@@ -51,8 +51,8 @@ export default function Home() {
           return (
             <tr key={chain}>
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>{chain}</td>
-              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{data.baseFee.toFixed(2)}</td>
-              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{data.priorityFee.toFixed(2)}</td>
+              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{chainData.baseFee.toFixed(2)}</td>
+              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{chainData.priorityFee.toFixed(2)}</td>
               <td style={{ border: '1px solid #ccc', padding: '8px' }}>
                 ${costUSD.toFixed(2)}
               </td>
