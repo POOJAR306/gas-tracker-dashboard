@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { startGasTracking } from '../utils/gasFetcher'
 import { useGasStore } from '../store/useGasStore'
 import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
-import GasChart from 'C:\Users\pooja\gas-tracker-dashboard\components\GasChart.tsx'
-import { CandlestickData, Time } from 'lightweight-charts'
-
+import GasChart from 'C:/Users/pooja/gas-tracker-dashboard/components/GasChart.tsx'
+import type { CandlestickData } from 'lightweight-charts';
 export default function Home() {
   const [txAmount, setTxAmount] = useState(0.5)
   const usd = useGasStore((state) => state.usdPrice)
