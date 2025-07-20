@@ -19,7 +19,7 @@ export const fetchEthPrice = async () => {
 
   if (logs.length === 0) return
 
-  const lastLog = logs[logs.length - 1]
+  const lastLog = logs[logs.length - 1] as EventLog
   const sqrtPriceX96 = lastLog.args?.sqrtPriceX96
 
   const sqrtPrice = Number(sqrtPriceX96.toString())
