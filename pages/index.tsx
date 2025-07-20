@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { startGasTracking } from '../utils/gasFetcher'
 import { useGasStore } from '../store/useGasStore'
 import { fetchEthPrice } from '../utils/uniswapPriceFetcher'
-import GasChart from 'C:/Users/pooja/gas-tracker-dashboard/components/GasChart.tsx'
-import type { SeriesDataItemTypeMap } from 'lightweight-charts';
+import GasChart from '../components/GasChart'
+import type { SeriesDataItemTypeMap } from 'lightweight-charts'
+
+type CandlestickData = SeriesDataItemTypeMap['Candlestick']
+
 const mockChartData: CandlestickData[] = [
   {
     time: Math.floor(Date.now() / 1000),
@@ -12,9 +15,22 @@ const mockChartData: CandlestickData[] = [
     low: 45,
     close: 60,
   },
-];
+  {
+    time: Math.floor(Date.now() / 1000) - 900,
+    open: 60,
+    high: 80,
+    low: 55,
+    close: 75,
+  },
+  {
+    time: Math.floor(Date.now() / 1000) - 1800,
+    open: 75,
+    high: 90,
+    low: 70,
+    close: 85,
+  },
+]
 
-type CandlestickData = SeriesDataItemTypeMap['Candlestick'];
 export default function Home() {
   const [txAmount, setTxAmount] = useState(0.5)
   const usd = useGasStore((state) => state.usdPrice)
@@ -26,34 +42,10 @@ export default function Home() {
 
     const interval = setInterval(() => {
       fetchEthPrice()
-    }, 15000) // fetch every 15 sec
+    }, 15000)
 
     return () => clearInterval(interval)
   }, [])
-
-  const mockChartData: CandlestickData[] = [
-    {
-      time: Math.floor(Date.now() / 1000) as Time,
-      open: 50,
-      high: 70,
-      low: 45,
-      close: 60,
-    },
-    {
-      time: Math.floor(Date.now() / 1000) - 900 as Time,
-      open: 60,
-      high: 80,
-      low: 55,
-      close: 75,
-    },
-    {
-      time: Math.floor(Date.now() / 1000) - 1800 as Time,
-      open: 75,
-      high: 90,
-      low: 70,
-      close: 85,
-    },
-  ]
 
   return (
     <main style={{ padding: '2rem', fontFamily: 'Arial' }}>
@@ -101,7 +93,7 @@ export default function Home() {
         </tbody>
       </table>
 
-      <h2 style={{ marginTop: '2rem' }}>Gas Price Volatility (Mock Data)</h2>
+      <h2 style={{ marginTop: '2rem' }}>📈 Gas Price Volatility (Mock Data)</h2>
       <GasChart data={mockChartData} />
     </main>
   )
